@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.exportpdf.demo.mapper.GoodsMapper">
+    <select id="selectAllGoods" resultType="com.exportpdf.demo.pojo.Goods">
+        select * from goods order by goodsId desc
+	</select>
+</mapper>
