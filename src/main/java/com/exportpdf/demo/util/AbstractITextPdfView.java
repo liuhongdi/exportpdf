@@ -14,13 +14,14 @@ import com.itextpdf.text.Document;
 
 /**
 新建一个pdfview,主要是为了避免AbstractPdfView中使用的pdf库太旧的问题
- 修改后可以支持itextpdf库的类，
  AbstractPdfView只支持到 com.lowagie.itext的2.1.7版本，
  版本太旧，文档也缺少
- 新增pdfview后此问题完美解决
+ 修改后可以支持itextpdf库的类，
+ 新增AbstractITextPdfView后此问题完美解决
  by liuhongdi
- */
+*/
 public abstract class AbstractITextPdfView extends AbstractView {
+
     public AbstractITextPdfView() {
         setContentType("application/pdf");
     }
@@ -40,9 +41,7 @@ public abstract class AbstractITextPdfView extends AbstractView {
         PdfWriter writer = newWriter(document, baos);
         prepareWriter(model, writer, request);
         buildPdfMetadata(model, document, request);
-        /*     document.open();*/
         buildPdfDocument(model, document, writer, request, response);
-        /*  document.close();*/
         writeToResponse(response, baos);
     }
 

@@ -29,9 +29,16 @@ public class HomeController {
     @Resource
     PdfTableService pdfTableService;
 
+
+    //从浏览器直接显示pdf
+    @GetMapping("/viewexistpdf")
+    public void viewexistpdf() {
+        String filePath = "/data/springboot2/goodslist.pdf";
+        PdfUtil.readPdfFile(filePath);
+    }
+
     //把数据保存到pdf文件
     @GetMapping("/savepdf")
-    @ResponseBody
     public String savepdf() {
         List<Goods> goodsList = goodsMapper.selectAllGoods();
         String savePath = "/data/springboot2/goodslist.pdf";
@@ -54,7 +61,7 @@ public class HomeController {
     //下载pdf文件
     @GetMapping("/downpdf")
     public void downpdf() {
-          String filepath = "/data/springboot2/hello.pdf";
+          String filepath = "/data/springboot2/goodslist.pdf";
           PdfUtil.downPdfFile(filepath);
      }
 }
